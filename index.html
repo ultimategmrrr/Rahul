@@ -1,153 +1,779 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
+
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<meta name="viewport"
+      content="width=device-width,
+               initial-scale=1.0,
+               maximum-scale=1.0,
+               user-scalable=no">
+
 <title>Garena Free Fire Team</title>
+
+
 <style>
-*{box-sizing:border-box}
-html,body{margin:0;padding:0;background:#292929;color:#fff;font-family:Arial,Helvetica,sans-serif}
-body{min-height:100vh}
+
+/* =========================================
+   GLOBAL RESET
+========================================= */
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+html{
+    width:100%;
+    min-height:100%;
+    overflow-x:hidden;
+}
+
+body{
+    width:100%;
+    min-height:100%;
+    margin:0;
+    padding:0;
+
+    overflow-x:hidden;
+
+    background:#2b2b2b;
+
+    color:#fff;
+
+    font-family:
+        Arial,
+        Helvetica,
+        sans-serif;
+}
+
+
+/* =========================================
+   HEADER
+========================================= */
+
 .header{
-  height:126px;background:linear-gradient(180deg,#6ec6e9,#5bb8db);
-  display:flex;align-items:center;justify-content:center;
-  box-shadow:0 2px 5px #111;font-size:38px;font-weight:800;
-  text-shadow:0 3px 4px rgba(0,0,0,.35)
-}
-.wrap{max-width:900px;margin:auto;padding:95px 38px 130px}
-.title{text-align:center;font-size:42px;font-weight:800;margin:0 0 48px}
-.video{
-  position:relative;width:100%;aspect-ratio:16/8.3;border-radius:28px;
-  overflow:hidden;background:
-    radial-gradient(circle at 50% 45%,rgba(0,190,255,.55),transparent 30%),
-    repeating-linear-gradient(90deg,rgba(0,0,0,.5) 0 2px,transparent 2px 72px),
-    repeating-linear-gradient(0deg,rgba(0,0,0,.35) 0 2px,transparent 2px 55px),
-    linear-gradient(135deg,#06283b,#0798d0 48%,#06334a);
-  box-shadow:0 10px 25px rgba(0,0,0,.35)
-}
-.phone{
-  position:absolute;left:50%;top:49%;transform:translate(-50%,-50%);
-  width:25%;height:82%;border:5px solid #111;border-radius:27px;
-  background:linear-gradient(#eee,#ddd);box-shadow:0 0 12px #000;
-}
-.phone:before{content:"";position:absolute;top:7px;left:50%;transform:translateX(-50%);
- width:30%;height:7px;background:#222;border-radius:10px}
-.screen{margin:16px 8px 8px;height:92%;border-radius:15px;background:#fafafa;color:#777;
- padding:18px 8px;font-size:10px}
-.screen .bar{height:10px;background:#ddd;margin:12px 0;border-radius:5px}
-.play{
- position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);
- width:0;height:0;border-top:25px solid transparent;border-bottom:25px solid transparent;
- border-left:38px solid #fff;filter:drop-shadow(0 2px 2px #555);z-index:3
-}
-.controls{position:absolute;left:30px;right:30px;bottom:25px;height:55px}
-.time{font-size:20px;position:absolute;bottom:24px;left:0}
-.full{position:absolute;right:5px;bottom:18px;font-size:25px}
-.dots{position:absolute;right:-5px;bottom:12px;font-size:29px}
-.track{position:absolute;left:0;right:0;bottom:0;height:7px;background:#777;border-radius:8px}
-.progress{width:28%;height:100%;background:#eee;border-radius:8px}
-.knob{position:absolute;left:7%;top:50%;transform:translateY(-50%);width:23px;height:23px;border-radius:50%;background:#fff}
+    width:100%;
+    height:82px;
 
-.card{
- margin-top:95px;padding:42px;border-radius:38px;
- background:#0f0f0f;position:relative;overflow:hidden;
- box-shadow:0 12px 30px rgba(0,0,0,.45)
-}
-.card:before{
- content:"";position:absolute;inset:0;padding:5px;border-radius:38px;
- background:linear-gradient(135deg,#ff1700,#ff8a00,#d8ef00,#00d85a,#00a9ff,#7a00ff);
- -webkit-mask:linear-gradient(#000 0 0) content-box,linear-gradient(#000 0 0);
- -webkit-mask-composite:xor;mask-composite:exclude;pointer-events:none
-}
-.badges{display:flex;gap:16px;margin-left:31%;margin-bottom:12px}
-.badge{padding:11px 24px;border-radius:24px;font-size:19px;font-weight:800}
-.new{background:#ff4348}.premium{background:#6a5ae8}
-.content{display:flex;align-items:center;gap:30px}
-.icon{width:130px;height:130px;border-radius:25px;object-fit:cover;
- background:radial-gradient(circle,#5ee9ff,#0068a6 45%,#10233c);
- display:flex;align-items:center;justify-content:center;font-weight:900;font-size:18px;
- text-align:center;box-shadow:inset 0 0 25px rgba(0,0,0,.4)}
-.info{flex:1}.name{font-size:39px;font-weight:500;margin-bottom:14px}
-.desc{font-size:25px;line-height:1.35;color:#aaa}
-.stars{color:#ffd21c;font-size:31px;letter-spacing:2px;margin-top:18px}
-.install{
- margin-top:45px;width:100%;border:0;border-radius:60px;padding:22px;
- font-size:31px;font-weight:700;color:#fff;background:linear-gradient(90deg,#00ef82,#00cf69);
- cursor:pointer;box-shadow:0 8px 24px rgba(0,255,130,.22)
-}
-.install:active{transform:scale(.99)}
-.note{text-align:center;color:#888;font-size:13px;margin-top:18px}
+    display:flex;
+    align-items:center;
+    justify-content:center;
 
-@media(max-width:600px){
- .header{height:126px;font-size:34px}
- .wrap{padding:96px 38px 100px}
- .title{font-size:40px;margin-bottom:48px}
- .video{border-radius:28px}
- .phone{width:28%;height:82%}
- .controls{left:30px;right:30px}
- .card{margin-top:94px;padding:42px 38px}
- .badges{margin-left:0;justify-content:center;gap:12px}
- .badge{font-size:17px;padding:10px 20px}
- .content{gap:26px}
- .icon{width:125px;height:125px;min-width:125px}
- .name{font-size:35px}
- .desc{font-size:23px}
- .install{font-size:30px;padding:21px}
+    padding:0 12px;
+
+    background:
+        linear-gradient(
+            #86d2ed,
+            #65bfe0
+        );
+
+    box-shadow:
+        0 3px 8px rgba(0,0,0,.25);
 }
-@media(max-width:430px){
- .header{font-size:32px}
- .wrap{padding-left:38px;padding-right:38px}
- .title{font-size:39px;white-space:nowrap}
- .video{aspect-ratio:1.42}
- .card{padding:38px 40px}
- .content{gap:23px}
- .icon{width:118px;min-width:118px;height:118px}
- .name{font-size:34px}
- .desc{font-size:22px}
+
+.header h1{
+    width:100%;
+
+    margin:0;
+    padding:0;
+
+    font-size:27px;
+    line-height:1.1;
+
+    font-weight:800;
+
+    text-align:center;
+
+    text-shadow:
+        0 2px 4px rgba(0,0,0,.30);
 }
+
+
+/* =========================================
+   MAIN
+========================================= */
+
+.main{
+    width:100%;
+    max-width:680px;
+
+    margin:0 auto;
+    padding:0 13px 20px;
+
+    display:flex;
+    flex-direction:column;
+
+    overflow:visible;
+}
+
+
+/* =========================================
+   WATCH TITLE
+========================================= */
+
+.watch-title{
+    width:100%;
+
+    margin:0;
+
+    padding:
+        34px 5px 18px;
+
+    font-size:27px;
+    line-height:1;
+
+    font-weight:800;
+
+    letter-spacing:1px;
+
+    text-align:center;
+
+    color:#fff;
+}
+
+
+/* =========================================
+   VIDEO CONTAINER
+========================================= */
+
+.video-box{
+    width:100%;
+    max-width:100%;
+
+    margin:0;
+    padding:0;
+
+    aspect-ratio:16 / 9;
+
+    position:relative;
+
+    background:#000;
+
+    border-radius:18px;
+
+    overflow:hidden;
+
+    box-shadow:
+        0 7px 18px rgba(0,0,0,.45);
+}
+
+
+/* VIDEO */
+
+.video-box video{
+    position:absolute;
+
+    inset:0;
+
+    display:block;
+
+    width:100%;
+    height:100%;
+
+    margin:0;
+    padding:0;
+
+    border:0;
+
+    background:#000;
+
+    object-fit:cover;
+}
+
+
+/* =========================================
+   MACRO SPACE PANEL CARD
+   ONLY 8PX GAP FROM VIDEO
+========================================= */
+
+.diamond-card{
+    width:100%;
+    max-width:100%;
+
+    margin:
+        8px 0 0;
+
+    padding:3px;
+
+    position:relative;
+
+    overflow:hidden;
+
+    flex:none;
+
+    border-radius:20px;
+
+    background:
+        linear-gradient(
+            45deg,
+            #ff0000,
+            #ff7300,
+            #fffb00,
+            #48ff00,
+            #00ffd5,
+            #002bff,
+            #7a00ff,
+            #ff00c8,
+            #ff0000
+        );
+
+    background-size:400% 400%;
+
+    animation:
+        rgbAnimation 10s linear infinite;
+
+    box-shadow:
+        0 8px 22px rgba(0,0,0,.50);
+}
+
+
+/* =========================================
+   NEON ANIMATION
+========================================= */
+
+@keyframes rgbAnimation{
+
+    0%{
+        background-position:0% 50%;
+    }
+
+    50%{
+        background-position:100% 50%;
+    }
+
+    100%{
+        background-position:0% 50%;
+    }
+}
+
+
+/* =========================================
+   CARD INNER
+========================================= */
+
+.card-inner{
+    width:100%;
+    max-width:100%;
+
+    margin:0;
+    padding:
+        12px;
+
+    background:#111;
+
+    border-radius:17px;
+
+    overflow:hidden;
+
+    display:flex;
+    flex-direction:column;
+}
+
+
+/* =========================================
+   BADGES
+========================================= */
+
+.badges{
+    width:100%;
+
+    margin:
+        0 0 8px;
+
+    padding:0;
+
+    display:flex;
+
+    align-items:center;
+    justify-content:center;
+
+    gap:8px;
+}
+
+.badge{
+    padding:
+        6px 13px;
+
+    border-radius:20px;
+
+    font-size:12px;
+    line-height:1;
+
+    font-weight:800;
+
+    white-space:nowrap;
+}
+
+.new{
+    background:#ff3b48;
+}
+
+.premium{
+    background:#6955ee;
+}
+
+
+/* =========================================
+   PRODUCT
+========================================= */
+
+.product{
+    width:100%;
+
+    margin:0;
+    padding:0;
+
+    display:flex;
+
+    align-items:center;
+
+    gap:10px;
+
+    min-width:0;
+}
+
+
+/* =========================================
+   CLICKABLE PRODUCT IMAGE
+========================================= */
+
+.product-link{
+    display:block;
+
+    width:76px;
+    height:76px;
+
+    min-width:76px;
+
+    flex:0 0 76px;
+
+    margin:0;
+    padding:0;
+
+    text-decoration:none;
+
+    overflow:hidden;
+
+    border-radius:14px;
+}
+
+.product-image{
+    display:block;
+
+    width:100%;
+    height:100%;
+
+    margin:0;
+    padding:0;
+
+    border:0;
+
+    object-fit:cover;
+
+    background:#222;
+
+    border-radius:14px;
+}
+
+
+/* =========================================
+   PRODUCT INFO
+========================================= */
+
+.product-info{
+    min-width:0;
+
+    flex:1;
+
+    margin:0;
+    padding:0;
+
+    overflow:hidden;
+}
+
+
+/* TITLE */
+
+.product-title{
+    width:100%;
+
+    margin:
+        0 0 5px;
+
+    padding:0;
+
+    font-size:22px;
+    line-height:1.05;
+
+    font-weight:800;
+
+    white-space:nowrap;
+
+    overflow:hidden;
+
+    text-overflow:ellipsis;
+}
+
+
+/* DESCRIPTION */
+
+.product-desc{
+    width:100%;
+
+    margin:0;
+    padding:0;
+
+    color:#aaa;
+
+    font-size:12px;
+
+    line-height:1.35;
+}
+
+
+/* STARS */
+
+.stars{
+    margin:
+        4px 0 0;
+
+    padding:0;
+
+    color:#ffd000;
+
+    font-size:18px;
+
+    line-height:1;
+
+    letter-spacing:1px;
+}
+
+
+/* =========================================
+   INSTALL BUTTON
+========================================= */
+
+.claim-btn{
+    width:100%;
+
+    height:58px;
+
+    margin:
+        10px 0 0;
+
+    padding:0 12px;
+
+    display:flex;
+
+    align-items:center;
+    justify-content:center;
+
+    border:0;
+
+    border-radius:40px;
+
+    background:
+        linear-gradient(
+            90deg,
+            #00f084,
+            #00d86f
+        );
+
+    color:#fff;
+
+    text-decoration:none;
+
+    font-size:20px;
+    line-height:1;
+
+    font-weight:900;
+
+    text-transform:uppercase;
+
+    text-align:center;
+
+    white-space:nowrap;
+
+    box-shadow:
+        0 5px 16px
+        rgba(0,230,120,.40);
+
+    transition:
+        transform .15s ease,
+        filter .15s ease;
+}
+
+.claim-btn:hover{
+    filter:brightness(1.05);
+}
+
+.claim-btn:active{
+    transform:scale(.97);
+}
+
+
+/* =========================================
+   VERY SMALL PHONES
+========================================= */
+
+@media(max-width:360px){
+
+    .header{
+        height:68px;
+    }
+
+    .header h1{
+        font-size:21px;
+    }
+
+    .main{
+        padding:
+            0 10px 16px;
+    }
+
+    .watch-title{
+        padding:
+            20px 4px 11px;
+
+        font-size:21px;
+    }
+
+    .video-box{
+        border-radius:14px;
+    }
+
+    /* केवल 8px gap */
+
+    .diamond-card{
+        margin-top:8px;
+
+        padding:3px;
+
+        border-radius:17px;
+    }
+
+    .card-inner{
+        padding:9px;
+
+        border-radius:14px;
+    }
+
+    .badges{
+        gap:6px;
+
+        margin-bottom:6px;
+    }
+
+    .badge{
+        padding:
+            5px 10px;
+
+        font-size:10px;
+    }
+
+    .product{
+        gap:8px;
+    }
+
+    .product-link{
+        width:70px;
+        height:70px;
+
+        min-width:70px;
+        flex-basis:70px;
+
+        border-radius:12px;
+    }
+
+    .product-image{
+        border-radius:12px;
+    }
+
+    .product-title{
+        font-size:19px;
+    }
+
+    .product-desc{
+        font-size:10px;
+    }
+
+    .stars{
+        font-size:16px;
+    }
+
+    .claim-btn{
+        height:52px;
+
+        margin-top:8px;
+
+        font-size:17px;
+    }
+}
+
 </style>
+
 </head>
+
+
 <body>
 
-<header class="header">Garena Free Fire Team</header>
 
-<main class="wrap">
-  <h1 class="title">WATCH FULL VIDEO</h1>
+<!-- =========================================
+     HEADER
+========================================= -->
 
-  <section class="video" aria-label="Video preview">
-    <div class="phone">
-      <div class="screen">
-        <b>Shared by Friend</b>
-        <div class="bar"></div><div class="bar"></div>
-        <div class="bar" style="width:70%"></div>
-        <div style="margin-top:35px;text-align:center">Video Preview</div>
-      </div>
-    </div>
-    <div class="play"></div>
-    <div class="controls">
-      <span class="time">0:03 / 1:04</span>
-      <span class="full">⛶</span>
-      <span class="dots">⋮</span>
-      <div class="track"><div class="progress"></div><div class="knob"></div></div>
-    </div>
-  </section>
+<header class="header">
 
-  <section class="card">
-    <div class="badges">
-      <span class="badge new">NEW</span>
-      <span class="badge premium">PREMIUM</span>
-    </div>
-    <div class="content">
-      <div class="icon">FREE<br>FIRE<br>💎</div>
-      <div class="info">
-        <div class="name">FREE DIAMONDS</div>
-        <div class="desc">FREE FIRE UNLIMITED<br>DIAMONDS · INSTANT CLAIM</div>
-        <div class="stars">★★★★★</div>
-      </div>
-    </div>
-    <button class="install" type="button" onclick="alert('Demo button — no download or data collection.')">Install</button>
-    <div class="note">Demo UI • This button does not install anything.</div>
-  </section>
+    <h1>
+        Garena Free Fire Team
+    </h1>
+
+</header>
+
+
+
+<!-- =========================================
+     MAIN
+========================================= -->
+
+<main class="main">
+
+
+    <!-- WATCH FULL VIDEO -->
+
+    <h2 class="watch-title">
+        WATCH FULL VIDEO
+    </h2>
+
+
+
+    <!-- ======================================
+         VIDEO
+    ======================================= -->
+
+    <section class="video-box">
+
+        <video
+            controls
+            controlsList="nodownload"
+            playsinline
+            webkit-playsinline
+            preload="auto"
+            disablePictureInPicture
+        >
+
+            <source
+                src="https://www.image2url.com/r2/default/videos/1789108124056-c1e0d32d-17e7-47bd-8564-18a10aecd053.mp4"
+                type="video/mp4"
+            >
+
+            Your browser does not support
+            the video tag.
+
+        </video>
+
+    </section>
+
+
+
+    <!-- ======================================
+         MACRO SPACE PANEL
+         8PX GAP ONLY
+    ======================================= -->
+
+    <section class="diamond-card">
+
+
+        <div class="card-inner">
+
+
+            <!-- BADGES -->
+
+            <div class="badges">
+
+                <span class="badge new">
+                    NEW
+                </span>
+
+                <span class="badge premium">
+                    PREMIUM
+                </span>
+
+            </div>
+
+
+
+            <!-- PRODUCT -->
+
+            <div class="product">
+
+
+                <!-- CLICKABLE IMAGE -->
+
+                <div class="product-link">
+
+                    <img
+                        class="product-image"
+                        src="https://www.image2url.com/r2/default/files/1789108019877-cb63dc15-b037-48a4-996a-f6db10e486b7.png"
+                        alt="Macro Space Panel"
+                    >
+
+                </div>
+
+
+
+                <!-- PRODUCT INFO -->
+
+                <div class="product-info">
+
+                    <div class="product-title">
+                        MACRO SPACE PANEL
+                    </div>
+
+
+                    <div class="product-desc">
+                        FREE FIRE MACRO SPACE PANEL
+                        <br>
+                        • INSTANT CLAIM
+                    </div>
+
+
+                    <div class="stars">
+                        ★★★★★
+                    </div>
+
+                </div>
+
+
+            </div>
+
+
+
+            <!-- INSTALL BUTTON -->
+
+            <a
+                class="claim-btn"
+                href="https://1024terabox.com/s/1nT7qTA52GVEBYPgiLaHSHw"
+                target="_blank"
+                rel="noopener noreferrer"
+            >
+                INSTALL
+            </a>
+
+
+        </div>
+
+
+    </section>
+
+
 </main>
+
+
 </body>
+
 </html>
